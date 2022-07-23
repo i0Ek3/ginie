@@ -1,6 +1,6 @@
 # ginie
 
-`ginie` is a simple Web framework, just like minimum viable version of Gin.
+`ginie` is a simple Web framework, just like minimum viable version of Gin, which use to learning the fundamentals of Web frameworks.
 
 ## Feature
 
