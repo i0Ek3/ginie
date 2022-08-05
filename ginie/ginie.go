@@ -14,8 +14,7 @@ type HandlerFunc func(*Context)
 type RouterGroup struct {
 	prefix      string
 	middlewares []HandlerFunc
-	//parent      *RouterGroup
-	engine *Engine
+	engine      *Engine
 }
 
 type Engine struct {
@@ -45,7 +44,6 @@ func (group *RouterGroup) Group(prefix string) *RouterGroup {
 	engine := group.engine
 	newGroup := &RouterGroup{
 		prefix: group.prefix + prefix,
-		//parent: group,
 		engine: engine,
 	}
 	engine.groups = append(engine.groups, newGroup)
@@ -106,7 +104,7 @@ func (e *Engine) Run(addr string) (err error) {
 }
 
 // ServeHTTP parses the path of request and then find the router map,
-// if it exist, then reigster handler for this request
+// if it exists, then register handler for this request
 func (e *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	var middlewares []HandlerFunc
 	// checks if this request what apply for

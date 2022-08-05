@@ -28,7 +28,7 @@ func trace(msg string) string {
 func Recovery() HandlerFunc {
 	return func(c *Context) {
 		defer func() {
-			if err := recover(); err != nil {
+			if err := recover(); err != any(nil) {
 				msg := fmt.Sprintf("%s", err)
 				log.Printf("%s\n\n", trace(msg))
 				c.Fail(http.StatusInternalServerError, "Internal Server Error")

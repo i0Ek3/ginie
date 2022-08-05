@@ -2,7 +2,7 @@ package ginie
 
 import "strings"
 
-// node is Trie node
+// node denotes Trie node
 type node struct {
 	// pattern is the route to be matched, /p/:doc
 	pattern string
@@ -59,7 +59,7 @@ func (n *node) insert(pattern string, parts []string, height int) {
 	child.insert(pattern, parts, height+1)
 }
 
-// search searchs node found from each layer recursively.
+// search searches node found from each layer recursively.
 // When it matches the node of the X layer or matches a *,
 // then failed.
 func (n *node) search(parts []string, height int) *node {
@@ -83,7 +83,7 @@ func (n *node) search(parts []string, height int) *node {
 }
 
 // travel travel nodes recursively
-func (n *node) travel(list *([]*node)) {
+func (n *node) travel(list *[]*node) {
 	if n.pattern != "" {
 		*list = append(*list, n)
 	}

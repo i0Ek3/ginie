@@ -22,7 +22,7 @@ type Context struct {
 	// response
 	StatusCode int
 
-	// niddleware
+	// middleware
 	handlers []HandlerFunc
 	// index records the number of middleware currently executed
 	index int
@@ -41,7 +41,7 @@ func newContext(w http.ResponseWriter, req *http.Request) *Context {
 	}
 }
 
-// Next calls next middleware until the last one
+// Next calls middleware until the last one
 func (c *Context) Next() {
 	c.index++
 	s := len(c.handlers)
